@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Gran Prix</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-white font-sans">
+  <!-- Header -->
+  <header class="bg-red-600 p-4 flex justify-between items-center">
+    <h1 class="text-3xl font-bold">Football Gran Prix</h1>
+    <nav class="space-x-4">
+      <a href="#news" class="hover:underline">News</a>
+      <a href="#exclusive" class="hover:underline">Esclusive</a>
+      <a href="#subscribe" class="hover:underline">Abbonati</a>
+      <a href="#admin" class="hover:underline">Admin</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-black to-gray-900 p-10 text-center">
+    <h2 class="text-4xl font-bold mb-4">Tutte le news di Calcio e Formula 1</h2>
+    <p class="text-lg">Rimani aggiornato sulle gare, risultati e analisi esclusive</p>
+  </section>
+
+  <!-- News Section -->
+  <section id="news" class="p-6">
+    <h3 class="text-2xl font-semibold mb-4">Ultime News</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-gray-800 p-4 rounded-xl shadow-md">
+        <h4 class="text-xl font-bold">Formula 1 - GP Australia</h4>
+        <p>Grande vittoria di Verstappen sotto il sole di Melbourne...</p>
+      </div>
+      <div class="bg-gray-800 p-4 rounded-xl shadow-md">
+        <h4 class="text-xl font-bold">Calcio - Champions League</h4>
+        <p>Il Real Madrid passa ai quarti con una prestazione convincente...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sezione Esclusive -->
+  <section id="exclusive" class="p-6 bg-gray-900">
+    <h3 class="text-2xl font-semibold mb-4">Contenuti Esclusivi</h3>
+    <div class="bg-gray-700 p-4 rounded-xl">
+      <p>Solo per abbonati. <a href="#login" class="text-red-400 underline">Accedi</a> o <a href="#subscribe" class="text-red-400 underline">Abbonati</a> per sbloccare analisi dettagliate delle gare.</p>
+    </div>
+  </section>
+
+  <!-- Sezione Abbonamento -->
+  <section id="subscribe" class="p-6">
+    <h3 class="text-2xl font-semibold mb-4">Abbonati - 4,99€/mese</h3>
+    <p class="mb-2">Accesso completo alle analisi esclusive e notizie approfondite. Pagamento automatico, disdetta quando vuoi.</p>
+    <button onclick="checkoutAbbonamento()" class="bg-red-600 text-white px-4 py-2 rounded-xl">Abbonati ora</button>
+  </section>
+
+  <!-- Admin Link (Accesso Riservato) -->
+  <section id="admin" class="p-6 bg-gray-900">
+    <h3 class="text-2xl font-semibold mb-4">Area Admin</h3>
+    <p>Accesso riservato. <a href="#login" class="text-red-400 underline">Accedi</a> con credenziali autorizzate per gestire articoli e guadagni.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center p-4 mt-10 bg-gray-800">
+    <p>&copy; 2025 Football Gran Prix | <a href="https://www.instagram.com" target="_blank">Instagram</a> - <a href="https://www.facebook.com" target="_blank">Facebook</a> - <a href="https://www.tiktok.com" target="_blank">TikTok</a></p>
+  </footer>
+
+  <script>
+    async function checkoutAbbonamento() {
+      const res = await fetch('http://localhost:3000/create-subscription', {
+        method: 'POST'
+      });
+      const data = await res.json();
+      window.location.href = data.checkoutUrl;
+    }
+  </script>
+</body>
+</html>
